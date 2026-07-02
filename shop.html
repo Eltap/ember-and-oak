@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop All Candles | Ember &amp; Oak</title>
+  <meta name="description" content="Browse all 8 Ember & Oak soy candle scents, hand-poured in small batches." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Karla:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/svg+xml" href="images/logo-mark.svg" />
+</head>
+<body>
+  <header>
+    <div class="nav-wrap">
+      <a href="index.html" class="logo"><img src="images/logo-mark.svg" alt="" class="logo-icon" width="28" height="28" />Ember <span>&amp; Oak</span></a>
+      <button class="nav-toggle" aria-label="Toggle menu">&#9776;</button>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html" class="active">Shop</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><button class="cart-btn" aria-label="Open cart">&#128717; <span class="cart-count">0</span></button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section style="padding: 50px 0 20px;">
+    <div class="container">
+      <div class="section-header" style="margin-bottom: 30px;">
+        <h2>Shop All Scents</h2>
+        <p>All 8 candles, hand-poured to order in our workshop. Free shipping over $60.</p>
+      </div>
+      <div class="product-grid" id="all-products"></div>
+    </div>
+  </section>
+
+  <div class="cart-overlay" id="cart-overlay"></div>
+  <aside class="cart-drawer" id="cart-drawer">
+    <div class="cart-header">
+      <h2>Your Cart</h2>
+      <button class="cart-close" id="cart-close" aria-label="Close cart">&times;</button>
+    </div>
+    <div class="cart-items" id="cart-items"></div>
+    <div class="cart-footer" id="cart-footer" style="display:none;">
+      <div class="cart-subtotal"><span>Subtotal</span><span id="cart-subtotal-amount">$0.00</span></div>
+      <button class="btn btn-full" id="checkout-btn">Checkout</button>
+      <p class="cart-note">Shipping and taxes calculated at checkout.</p>
+    </div>
+  </aside>
+
+  <div class="modal-overlay" id="checkout-modal">
+    <div class="modal">
+      <div class="modal-body">
+        <div class="modal-icon">&#128179;</div>
+        <h2>Demo Checkout</h2>
+        <p id="checkout-summary"></p>
+        <div class="modal-demo-note">This is a demo store &mdash; no real payment will be processed. On a live Ember &amp; Oak site, this step connects to Stripe Payment Links or Snipcart for real, secure checkout.</div>
+        <div class="modal-actions">
+          <button class="btn-outline" id="checkout-close">Cancel</button>
+          <button class="btn" id="place-order-btn">Place Demo Order</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>Ember &amp; Oak</h4>
+          <p style="opacity:0.8; max-width: 32ch;">Small-batch soy candles, hand-poured for cozy nights in.</p>
+        </div>
+        <div>
+          <h4>Shop</h4>
+          <ul>
+            <li><a href="shop.html">All Candles</a></li>
+            <li><a href="about.html">Our Story</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Support</h4>
+          <ul>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="contact.html#faq">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="fine-print">&copy; 2026 Ember &amp; Oak. Demo site built by Prism Websites &mdash; not a real store.</div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script>
+    renderProductGrid("all-products");
+  </script>
+</body>
+</html>

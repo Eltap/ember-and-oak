@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ember &amp; Oak | Small-Batch Soy Candles</title>
+  <meta name="description" content="Hand-poured, small-batch soy candles in warm, cozy scents. Clean-burning cotton wicks, no parabens, shipped from our workshop to your home." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Karla:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/svg+xml" href="images/logo-mark.svg" />
+</head>
+<body>
+  <header>
+    <div class="nav-wrap">
+      <a href="index.html" class="logo"><img src="images/logo-mark.svg" alt="" class="logo-icon" width="28" height="28" />Ember <span>&amp; Oak</span></a>
+      <button class="nav-toggle" aria-label="Toggle menu">&#9776;</button>
+      <nav>
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><button class="cart-btn" aria-label="Open cart">&#128717; <span class="cart-count">0</span></button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div>
+        <div class="eyebrow"><span>&#128293;</span> Hand-poured in small batches</div>
+        <h1>Candles that make your whole house feel like a hug.</h1>
+        <p>Small-batch soy candles in warm, cozy scents &mdash; hand-poured with clean-burning cotton wicks, no parabens, no shortcuts.</p>
+        <div class="hero-ctas">
+          <a href="shop.html" class="btn">Shop the Collection</a>
+          <a href="about.html" class="btn btn-outline">Our Story</a>
+        </div>
+      </div>
+      <div class="hero-candles">
+        <img src="images/candle-lavender-hearth.svg" alt="Lavender Hearth candle" />
+        <img src="images/candle-amber-oakwood.svg" alt="Amber & Oakwood candle" />
+        <img src="images/candle-winter-balsam.svg" alt="Winter Balsam candle" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section-alt">
+    <div class="container">
+      <div class="grid-3">
+        <div class="value-card">
+          <div class="value-icon">&#127793;</div>
+          <h3>100% Soy Wax</h3>
+          <p>Clean-burning, no parabens or phthalates &mdash; just wax and fragrance.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">&#128736;&#65039;</div>
+          <h3>Hand-Poured</h3>
+          <p>Every candle poured in small batches of 24, never mass-produced.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">&#128230;</div>
+          <h3>Shipped With Care</h3>
+          <p>Packed snug so it arrives exactly like it left our workshop.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="featured">
+    <div class="container">
+      <div class="section-header">
+        <h2>Fan Favorites</h2>
+        <p>A few of the scents people reorder most.</p>
+      </div>
+      <div class="product-grid" id="featured-products"></div>
+      <div style="text-align:center; margin-top: 36px;">
+        <a href="shop.html" class="btn btn-outline">See All 8 Scents</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-alt">
+    <div class="container">
+      <div class="about-grid">
+        <div>
+          <h2>Why Ember &amp; Oak</h2>
+          <p>We started in a tiny apartment kitchen, testing scent blends until the neighbors started asking where the candle shop was. Every batch is still poured by hand, in small runs, so we can actually stand behind the quality.</p>
+          <ul class="check-list">
+            <li>Cotton wicks, no lead or zinc cores</li>
+            <li>Reusable glass jars</li>
+            <li>40+ hour burn time per candle</li>
+            <li>Scented, tested, and approved by our (very patient) neighbors</li>
+          </ul>
+          <a href="about.html" class="btn btn-outline">Read Our Story</a>
+        </div>
+        <div class="hero-candles" style="justify-content: center;">
+          <img src="images/candle-fireside-cedar.svg" alt="Fireside Cedar candle" style="width: 180px;" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cart-overlay" id="cart-overlay"></div>
+  <aside class="cart-drawer" id="cart-drawer">
+    <div class="cart-header">
+      <h2>Your Cart</h2>
+      <button class="cart-close" id="cart-close" aria-label="Close cart">&times;</button>
+    </div>
+    <div class="cart-items" id="cart-items"></div>
+    <div class="cart-footer" id="cart-footer" style="display:none;">
+      <div class="cart-subtotal"><span>Subtotal</span><span id="cart-subtotal-amount">$0.00</span></div>
+      <button class="btn btn-full" id="checkout-btn">Checkout</button>
+      <p class="cart-note">Shipping and taxes calculated at checkout.</p>
+    </div>
+  </aside>
+
+  <div class="modal-overlay" id="checkout-modal">
+    <div class="modal">
+      <div class="modal-body">
+        <div class="modal-icon">&#128179;</div>
+        <h2>Demo Checkout</h2>
+        <p id="checkout-summary"></p>
+        <div class="modal-demo-note">This is a demo store &mdash; no real payment will be processed. On a live Ember &amp; Oak site, this step connects to Stripe Payment Links or Snipcart for real, secure checkout.</div>
+        <div class="modal-actions">
+          <button class="btn-outline" id="checkout-close">Cancel</button>
+          <button class="btn" id="place-order-btn">Place Demo Order</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>Ember &amp; Oak</h4>
+          <p style="opacity:0.8; max-width: 32ch;">Small-batch soy candles, hand-poured for cozy nights in.</p>
+        </div>
+        <div>
+          <h4>Shop</h4>
+          <ul>
+            <li><a href="shop.html">All Candles</a></li>
+            <li><a href="about.html">Our Story</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Support</h4>
+          <ul>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="contact.html#faq">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="fine-print">&copy; 2026 Ember &amp; Oak. Demo site built by Prism Websites &mdash; not a real store.</div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script>
+    renderProductGrid("featured-products", ["amber-oakwood", "vanilla-bourbon", "spiced-chai", "winter-balsam"]);
+  </script>
+</body>
+</html>

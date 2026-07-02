@@ -1,0 +1,22 @@
+<svg viewBox="0 0 240 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- flame -->
+  <ellipse cx="120" cy="70" rx="9" ry="17" fill="#e0632c"/>
+  <ellipse cx="120" cy="74" rx="6" ry="12" fill="#f8b84e"/>
+  <ellipse cx="120" cy="78" rx="3" ry="7" fill="#fff3c4"/>
+  <!-- wick -->
+  <rect x="118" y="82" width="4" height="16" rx="1.5" fill="#2b2420"/>
+  <!-- wax top -->
+  <ellipse cx="120" cy="100" rx="58" ry="12" fill="#f5efe6"/>
+  <!-- jar body -->
+  <path d="M62 100 L62 250 Q62 268 80 268 L160 268 Q178 268 178 250 L178 100 Z" fill="#8a7ab0"/>
+  <!-- jar rim -->
+  <ellipse cx="120" cy="100" rx="58" ry="10" fill="none" stroke="#2b2420" stroke-opacity="0.15" stroke-width="2"/>
+  <!-- label band -->
+  <rect x="72" y="168" width="96" height="52" rx="4" fill="#f5efe6" fill-opacity="0.92"/>
+  <rect x="72" y="168" width="96" height="52" rx="4" fill="none" stroke="#4b3f66" stroke-width="1.5" stroke-opacity="0.5"/>
+  <line x1="86" y1="186" x2="154" y2="186" stroke="#4b3f66" stroke-width="2" stroke-linecap="round"/>
+  <line x1="86" y1="196" x2="154" y2="196" stroke="#4b3f66" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+  <line x1="86" y1="206" x2="134" y2="206" stroke="#4b3f66" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+  <!-- base shadow -->
+  <ellipse cx="120" cy="270" rx="60" ry="7" fill="#2b2420" fill-opacity="0.12"/>
+</svg>
