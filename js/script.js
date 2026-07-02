@@ -10,72 +10,21 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // ---- Product catalog ----
-var PRODUCTS = [
-  {
-    id: "amber-oakwood",
-    name: "Amber & Oakwood",
-    scent: "Warm & Woody",
-    price: 24,
-    desc: "Amber resin, warm oak, and a whisper of sandalwood. Our best-seller.",
-    image: "images/candle-amber-oakwood.svg"
-  },
-  {
-    id: "fireside-cedar",
-    name: "Fireside Cedar",
-    scent: "Smoky & Grounding",
-    price: 24,
-    desc: "Crackling cedar and smoked vanilla, like sitting by the fire.",
-    image: "images/candle-fireside-cedar.svg"
-  },
-  {
-    id: "vanilla-bourbon",
-    name: "Vanilla Bourbon",
-    scent: "Sweet & Rich",
-    price: 26,
-    desc: "Madagascar vanilla bean, bourbon, and brown sugar.",
-    image: "images/candle-vanilla-bourbon.svg"
-  },
-  {
-    id: "wild-fig-clove",
-    name: "Wild Fig & Clove",
-    scent: "Fruity & Spiced",
-    price: 26,
-    desc: "Ripe fig, clove, and dark plum for cooler evenings.",
-    image: "images/candle-wild-fig-clove.svg"
-  },
-  {
-    id: "lavender-hearth",
-    name: "Lavender Hearth",
-    scent: "Calm & Floral",
-    price: 22,
-    desc: "French lavender, chamomile, and soft musk. Good for winding down.",
-    image: "images/candle-lavender-hearth.svg"
-  },
-  {
-    id: "spiced-chai",
-    name: "Spiced Chai",
-    scent: "Warm & Spiced",
-    price: 24,
-    desc: "Cardamom, cinnamon, and black tea, poured into soy wax.",
-    image: "images/candle-spiced-chai.svg"
-  },
-  {
-    id: "sea-salt-driftwood",
-    name: "Sea Salt & Driftwood",
-    scent: "Fresh & Coastal",
-    price: 24,
-    desc: "Sea salt, weathered driftwood, and a breath of ozone.",
-    image: "images/candle-sea-salt-driftwood.svg"
-  },
-  {
-    id: "winter-balsam",
-    name: "Winter Balsam",
-    scent: "Fresh & Green",
-    price: 26,
-    desc: "Balsam fir, pine needle, and a touch of frost. Seasonal favorite.",
-    image: "images/candle-winter-balsam.svg"
-  }
-];
+// Loaded from products.json so the shop owner can add/edit products and
+// prices by editing that one file (e.g. via GitHub's web editor) without
+// touching this script.
+var PRODUCTS = [];
+
+var emberOakReady = fetch("products.json")
+  .then(function (res) {
+    return res.json();
+  })
+  .then(function (data) {
+    PRODUCTS = data;
+  })
+  .catch(function () {
+    PRODUCTS = [];
+  });
 
 function getProduct(id) {
   for (var i = 0; i < PRODUCTS.length; i++) {
@@ -287,7 +236,7 @@ function placeDemoOrder() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  renderCart();
+  emberOakReady.then(renderCart);
 
   var cartBtns = document.querySelectorAll(".cart-btn");
   cartBtns.forEach(function (btn) {
