@@ -10,17 +10,26 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // ---- Product catalog ----
-// Loaded from products.json so the shop owner can add/edit products and
-// prices by editing that one file (e.g. via GitHub's web editor) without
-// touching this script.
+// Loaded from the Prism Websites CMS (Directus) so the shop owner can add/edit
+// products, prices, and photos from a simple login instead of editing code.
+var DIRECTUS_URL = "https://directus-production-0caa.up.railway.app";
 var PRODUCTS = [];
 
-var emberOakReady = fetch("products.json")
+var emberOakReady = fetch(DIRECTUS_URL + "/items/products?fields=id,name,scent,description,price,photo")
   .then(function (res) {
     return res.json();
   })
-  .then(function (data) {
-    PRODUCTS = data;
+  .then(function (json) {
+    PRODUCTS = (json.data || []).map(function (p) {
+      return {
+        id: String(p.id),
+        name: p.name,
+        scent: p.scent,
+        price: parseFloat(p.price),
+        desc: p.description,
+        image: p.photo ? DIRECTUS_URL + "/assets/" + p.photo : ""
+      };
+    });
   })
   .catch(function () {
     PRODUCTS = [];
@@ -300,4 +309,42 @@ document.addEventListener("DOMContentLoaded", function () {
         status.style.color = "#c1502e";
       });
   });
+});
+
+// ---- Site info (contact email/phone/hours from the CMS) ----
+document.addEventListener("DOMContentLoaded", function () {
+  var infoEl = document.getElementById("site-contact-info");
+  if (!infoEl) return;
+
+  function row(label, value, isEmail) {
+    if (!value) return;
+    var div = document.createElement("div");
+    var strong = document.createElement("strong");
+    strong.textContent = label + ": ";
+    div.appendChild(strong);
+    if (isEmail) {
+      var a = document.createElement("a");
+      a.href = "mailto:" + value;
+      a.textContent = value;
+      div.appendChild(a);
+    } else {
+      var span = document.createElement("span");
+      span.style.whiteSpace = "pre-line";
+      span.textContent = value;
+      div.appendChild(span);
+    }
+    infoEl.appendChild(div);
+  }
+
+  fetch(DIRECTUS_URL + "/items/site_info")
+    .then(function (res) {
+      return res.json();
+    })
+    .then(function (json) {
+      var info = json.data || {};
+      row("Email", info.contact_email, true);
+      row("Phone", info.contact_phone);
+      row("Hours", info.hours);
+    })
+    .catch(function () {});
 });
