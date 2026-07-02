@@ -11,10 +11,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // ---- Product catalog ----
 // Loaded from products.json so the shop owner can add/edit products and
-// prices by editing that one file (via GitHub's web editor, or a CMS admin
-// panel like Decap/Sveltia) without touching this script. The file's root
-// is a keyed object ({ "products": [...] }), not a bare array, since that's
-// what the CMS "files" collection type requires.
+// prices by editing that one file (e.g. via GitHub's web editor) without
+// touching this script.
 var PRODUCTS = [];
 
 var emberOakReady = fetch("products.json")
@@ -22,7 +20,7 @@ var emberOakReady = fetch("products.json")
     return res.json();
   })
   .then(function (data) {
-    PRODUCTS = data.products;
+    PRODUCTS = data;
   })
   .catch(function () {
     PRODUCTS = [];

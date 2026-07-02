@@ -49,7 +49,7 @@ This file follows a strict format (called JSON), so a few things matter:
 
 - Every product block needs a comma right after its closing `}` — **except the very last one in the file**, which has no comma.
 - Don't remove any of the quotation marks — they need to stay exactly where they are.
-- Don't delete the curly braces `{` `}` or the `"products": [` / closing `]` lines that wrap the whole list.
+- Don't delete the square brackets `[` and `]` at the very start and end of the whole file.
 - If you're ever unsure before making a bigger edit, copy the file's full contents somewhere safe first, so you can paste it back if something goes wrong.
 
 ## If Something Breaks
